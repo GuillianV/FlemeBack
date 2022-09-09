@@ -8,7 +8,22 @@ let Recognized = require("../modules/database/mongoose/models/recognize")
 /* GET home page. */
 router.get('/',  async function(req, res, next) {
 
-  res.render('index', { title: 'Fleme' });
+  res.json([])
+
+
+});
+
+router.post('/',  async function(req, res, next) {
+
+    let text = typeof req.query.text !== 'undefined' ? req.query.text : null;
+    if(text == null){
+      res.json({error: "No text"})
+    }
+
+    let recognize = await Recognized.CreateRecognized(text)
+    console.log(recognize)
+    res.json(recognize)
+
 
 
 });
@@ -16,13 +31,11 @@ router.get('/',  async function(req, res, next) {
 
 router.get('/:recognizeUrl',  async function(req, res, next) {
 
-
   let recognize = await Recognized.FindRecognizedByUrl(req.params.recognizeUrl)
   if(recognize == null){
-    res.render('index', { title: 'Fleme' });
+    res.json({})
   }else{
-    res.render('recognize', { text: recognize.text });
-
+    res.json(recognize)
   }
 
 });
