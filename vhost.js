@@ -1,8 +1,9 @@
 require('../../server.js')
 
+
 module.exports = function (app, express, vhost, PrepareBasicRoutes) {
 
-   
+    require('dotenv').config({path:__dirname+'/.env'})
 
     const cdn = [
         'www.fleme.fr',
@@ -13,6 +14,8 @@ module.exports = function (app, express, vhost, PrepareBasicRoutes) {
     let flemeApp = require("./app.js")
 
     
+   
+
     app.use(vhost(cdn, flemeApp))
 
 

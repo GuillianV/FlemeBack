@@ -4,7 +4,6 @@ var path = require('path');
 var fs = require('fs')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
-require("dotenv").config()
 
 //multer permet d'enregitrer des fichiers tels que des photos ou autres documents
 var multer = require('multer');
@@ -38,8 +37,8 @@ app.use(`/`, require(`${routesFolder}/index`));
 fs.readdirSync( path.join(__dirname,"/routes"))?.forEach(file =>{
 
   if (!file.includes("index")){
-    console.log(`/${file.replace(".js","")}`)
-    console.log(`${routesFolder}/${file.replace(".js","")}`)
+    // console.log(`/${file.replace(".js","")}`)
+    // console.log(`${routesFolder}/${file.replace(".js","")}`)
 
     app.use(`/${file.replace(".js","")}`, require(`${routesFolder}/${file.replace(".js","")}`));
   }
