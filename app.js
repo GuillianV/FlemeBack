@@ -4,6 +4,7 @@ var path = require('path');
 var fs = require('fs')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser');
+require("dotenv").config()
 
 //multer permet d'enregitrer des fichiers tels que des photos ou autres documents
 var multer = require('multer');
