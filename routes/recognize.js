@@ -19,22 +19,19 @@ router.post('/',  async function(req, res, next) {
     if(text == null){
       res.json({error: "No text"})
     }
-
     let recognize = await Recognized.CreateRecognized(text)
-    console.log(recognize)
     res.json(recognize)
-
-
-
 });
 
 
 router.get('/:recognizeUrl',  async function(req, res, next) {
 
   let recognize = await Recognized.FindRecognizedByUrl(req.params.recognizeUrl)
+
   if(recognize == null){
     res.json({})
   }else{
+    
     res.json(recognize)
   }
 
