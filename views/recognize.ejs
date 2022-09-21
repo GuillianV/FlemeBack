@@ -25,10 +25,11 @@
 
 var text = "<%- text %>"
 let pre = document.querySelector("pre");
-
+let exportedText = "";
 let SplitText = text.split("/!:/");
     for (var line of SplitText){
 
+        exportedText += line + " ";
         pre.insertAdjacentHTML("beforeend","<br>" )
         pre.insertAdjacentText("beforeend",line)
         pre.insertAdjacentHTML("beforeend","<br>" )
@@ -37,7 +38,7 @@ let SplitText = text.split("/!:/");
 
 let clipboard = document.querySelector(".clipboard");
 clipboard.addEventListener("click", function(){
-    copyToClipboard(text)
+    copyToClipboard(exportedText)
     alert("Text copié dans le presse-papier");
 })
 
