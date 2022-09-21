@@ -28,6 +28,7 @@ router.get('/:recognizeUrl',  async function(req, res, next) {
     let text = ""
     for (let line of recognize.text.split("\n")) {
       text += line + "/!:/";
+      text.replace("\"","'");
     }
     res.render('recognize', { text: text });
 
