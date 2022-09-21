@@ -19,6 +19,7 @@ router.post('/',  async function(req, res, next) {
     if(text == null){
       res.json({error: "No text"})
     }
+    text.replace("\"","'");
     let recognize = await Recognized.CreateRecognized(text)
     res.json(recognize)
 });

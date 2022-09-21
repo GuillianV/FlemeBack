@@ -24,6 +24,7 @@ router.get('/:recognizeUrl',  async function(req, res, next) {
     res.render('index', { title: 'Fleme' });
   }else{
     
+ 
     let text = ""
     for (let line of recognize.text.split("\n")) {
       text += line + "/!:/";
