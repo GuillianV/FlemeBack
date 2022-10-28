@@ -4,16 +4,68 @@
 
 :root {
   --main-color: rgb(54, 143, 139,255);
-  --light-secondary-color : rgb(241, 237, 238);
-  --light-background-color : rgb( 34, 34, 34);
+  --dark-secondary-color : rgb(241, 237, 238);
+  --dark-background-color : rgb( 34, 34, 34);
 
-  --dark-secondary-color : rgb( 34, 34, 34);
-  --dark-background-color : rgb(241, 237, 238);
+  --light-secondary-color : rgb( 34, 34, 34);
+  --light-background-color : rgb(241, 237, 238);
+
+  
 
   --font-family : "Poppins", sans-serif;
+  --border-radius:5px;
+  --margin:16px;
+  --padding:8px;
+  --divider-ratio:4;
 
+  --box-shadow:0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 body {
   font: 14px var(--font-family);
+  background-color: var(--dark-secondary-color);
+}
+
+#container{
+  width: 100%;
+  height: auto;
+  background-color: var(--light-background-color);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.block-full{
+  width: calc(100vw - (( var(--margin) + var(--padding))* 2));
+  display: flex;
+  margin: var(--margin);
+  padding: var(--padding);
+  
+}
+
+.block-full.row{
+  flex-direction: row;
+}
+
+.block-full.wrap{
+  flex-wrap: wrap;
+}
+
+.block-full.column{
+  flex-direction: column;
+}
+
+.divider{
+  height: fit-content;
+  width: calc(100% - ((var(--margin)*2) * var(--divider-ratio)));
+  margin: calc(var(--margin) * 2)  calc(  var(--margin)*   var(--divider-ratio)) ;
+  border: solid var(--light-secondary-color) 0.5px;
+}
+
+h1{
+  margin-left: var(--margin);
+  font-size: 3rem;
+  font-weight: 700; 
 }

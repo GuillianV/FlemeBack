@@ -20,20 +20,35 @@
         </div>
     </header>
 
-    <div class="clipboard">
-        <img src="icons/copy.png">
-    </div>
-    <pre>
-     
+    
+    <div id="container">
 
-    </pre>
+        <div class="block-full column votre-texte">
+            <h1>Votre texte</h1>
+            <p>
+               
+            </p>
+        </div>
+        <div class="divider">
+
+        </div>
+
+        <div class="block-full column vos-blocks">
+            <h1>Vos blocks de texte</h1>
+            <div>
+                
+            </div>
+        </div>
+    </div>
+
+ 
 </body>
 
 <script>
 
 
 var text = "<%- text %>"
-let pre = document.querySelector("pre");
+let pre = document.querySelector(".votre-texte p");
 let exportedText = "";
 let SplitText = text.split("/!:/");
     for (var line of SplitText){
@@ -63,25 +78,5 @@ const copyToClipboard = (content) => {
 };
 
 </script>
-<style>
-
-pre {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 12px;
-    line-height: 18px;
-    overflow: auto;
-    padding: 9.5px;
-    white-space: pre;
-    word-wrap: normal;
-    font-size: 4.5vw;
-    line-height: 4.5vw;
-}
-
-
-
-</style>
 
 </html>

@@ -1,21 +1,30 @@
 header{
-    margin: 8px;
-    padding: 8px;
+    margin: var(--margin);
+    padding: var(--padding);
+    z-index: 10;
+    position: sticky;
+    top: var(--margin);
+    width: calc(100vw - (( var(--margin) + var(--padding))* 2));
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    font-size: 2rem;
     flex-wrap: nowrap;
     background-color: var(--main-color);
-    border-radius: 5px;
-    color: var( --light-secondary-color );
+    border-radius: var(--border-radius);
+    color: var( --light-background-color );
+    
 }
 
+header :first-child{
+    margin-left: var(--margin);
+}
 
 .clipboard{
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: auto;
+    height: 40px;
     z-index: 1;
     cursor: pointer;
 }
@@ -25,4 +34,18 @@ img{
     height:100%;
     background-size: contain;
     object-fit: contain;
+    filter: invert(1);
+}
+
+h1{
+    margin-left: 10vw;
+}
+
+.votre-texte p{
+    background-color: #fff;
+    border: 2px solid var(--main-color);
+    border-radius: var(--border-radius);
+    padding: var(--padding);
+    box-shadow: var(--box-shadow);
+    font-size: clamp(0.8rem, 2vw, 2rem);
 }
