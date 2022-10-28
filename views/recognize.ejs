@@ -102,6 +102,16 @@ const copyToClipboard = (content) => {
   }
 };
 
+let textBlocks = document.querySelectorAll('.text-block');
+let minWidth = Array.from(textBlocks).map(txtbloc =>  txtbloc.clientWidth ).reduce((a, b) => Math.min(a, b))
+textBlocks?.forEach(txtbloc => {
+    txtbloc.style.width = minWidth+"px";
+})
+var msnry = new Masonry( '.vos-blocks .wrapper', {
+    itemSelector: '.text-block',
+    columnWidth: minWidth
+});
+
 </script>
 
 </html>

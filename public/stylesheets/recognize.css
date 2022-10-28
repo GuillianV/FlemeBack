@@ -54,18 +54,20 @@ h1{
     font-size: clamp(0.8rem, 2vw, 2rem);
 }
 
-.votre-texte .wrapper{
+.vos-blocks .wrapper{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+ 
 }
 
 .vos-blocks .wrapper .text-block{
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: fit-content;
-    margin: var(--margin);
+    margin: calc(var(--margin) / 2) ;
     padding: var(--padding);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -73,8 +75,16 @@ h1{
 }
 
 .vos-blocks .wrapper .text-block p{
+
 }
 
 .vos-blocks .wrapper .text-block .clipboard{
     width: 20%;
+    padding: var(--padding);
+}
+
+.vos-blocks .wrapper .text-block img{
+    filter: invert(0);
+
+    
 }
