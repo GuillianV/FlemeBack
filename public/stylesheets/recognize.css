@@ -41,11 +41,40 @@ h1{
     margin-left: 10vw;
 }
 
+.votre-texte{
+    padding: 0;
+    width: calc(100vw - (( var(--margin))* 2));
+}
 .votre-texte p{
     background-color: #fff;
-    border: 2px solid var(--main-color);
+    border: var(--border);
     border-radius: var(--border-radius);
     padding: var(--padding);
     box-shadow: var(--box-shadow);
     font-size: clamp(0.8rem, 2vw, 2rem);
+}
+
+.votre-texte .wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.vos-blocks .wrapper .text-block{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: fit-content;
+    margin: var(--margin);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+}
+
+.vos-blocks .wrapper .text-block p{
+}
+
+.vos-blocks .wrapper .text-block .clipboard{
+    width: 20%;
 }
