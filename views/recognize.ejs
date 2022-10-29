@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Fleme</title>
-    <link rel="stylesheet" href="stylesheets/reset.css" >
-    <link rel="stylesheet" href="stylesheets/style.css" >
-    <link rel="stylesheet" href="stylesheets/recognize.css" >
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <link rel="stylesheet" href="stylesheets/reset.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/recognize.css">
+    <script src="https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
 </head>
 
 <body>
-   
+
     <header>
         <div>
             fleme.fr/efer3
@@ -21,13 +21,13 @@
         </div>
     </header>
 
-    
+
     <div id="container">
 
         <div class="block-full column votre-texte">
             <h1>Votre texte</h1>
             <p>
-               
+
             </p>
         </div>
         <div class="divider">
@@ -39,7 +39,9 @@
             <div class="wrapper">
                 <div class="text-block">
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, voluptas et? Sit sint repudiandae blanditiis recusandae enim voluptates officia earum quidem, quod laudantium dolores tempore quia voluptate illum dicta quae!
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, voluptas et? Sit sint
+                        repudiandae blanditiis recusandae enim voluptates officia earum quidem, quod laudantium dolores
+                        tempore quia voluptate illum dicta quae!
 
                     </p>
                     <div class="clipboard">
@@ -66,51 +68,66 @@
         </div>
     </div>
 
- 
+
 </body>
 
 <script>
 
 
-var text = "<%- text %>"
-let pre = document.querySelector(".votre-texte p");
-let exportedText = "";
-let SplitText = text.split("/!:/");
-    for (var line of SplitText){
 
-        exportedText += line + " ";
-        pre.insertAdjacentHTML("beforeend","<br>" )
-        pre.insertAdjacentText("beforeend",line)
-        pre.insertAdjacentHTML("beforeend","<br>" )
-   
-    };
-
-let clipboard = document.querySelector(".clipboard");
-clipboard.addEventListener("click", function(){
-    copyToClipboard(exportedText)
-    alert("Text copié dans le presse-papier");
-})
+    document.addEventListener("DOMContentLoaded", _ => {
 
 
-const unsecuredCopyToClipboard = (text) => { const textArea = document.createElement("textarea"); textArea.value=text; document.body.appendChild(textArea); textArea.focus();textArea.select(); try{document.execCommand('copy')}catch(err){console.error('Unable to copy to clipboard',err)}document.body.removeChild(textArea)};
 
-const copyToClipboard = (content) => {
-  if (window.isSecureContext && navigator.clipboard) {
-    navigator.clipboard.writeText(content);
-  } else {
-    unsecuredCopyToClipboard(content);
-  }
-};
+        var text = "<%- text %>"
+        let pre = document.querySelector(".votre-texte p");
+        let exportedText = "";
+        let SplitText = text.split("/!:/");
+        for (var line of SplitText) {
 
-let textBlocks = document.querySelectorAll('.text-block');
-let minWidth = Array.from(textBlocks).map(txtbloc =>  txtbloc.clientWidth ).reduce((a, b) => Math.min(a, b))
-textBlocks?.forEach(txtbloc => {
-    txtbloc.style.width = minWidth+"px";
-})
-var msnry = new Masonry( '.vos-blocks .wrapper', {
-    itemSelector: '.text-block',
-    columnWidth: minWidth
-});
+            exportedText += line + " ";
+            pre.insertAdjacentHTML("beforeend", "<br>")
+            pre.insertAdjacentText("beforeend", line)
+            pre.insertAdjacentHTML("beforeend", "<br>")
+
+        };
+
+        let clipboard = document.querySelector(".clipboard");
+        clipboard.addEventListener("click", function () {
+            copyToClipboard(exportedText)
+            alert("Text copié dans le presse-papier");
+        })
+
+
+        const unsecuredCopyToClipboard = (text) => { const textArea = document.createElement("textarea"); textArea.value = text; document.body.appendChild(textArea); textArea.focus(); textArea.select(); try { document.execCommand('copy') } catch (err) { console.error('Unable to copy to clipboard', err) } document.body.removeChild(textArea) };
+
+        const copyToClipboard = (content) => {
+            if (window.isSecureContext && navigator.clipboard) {
+                navigator.clipboard.writeText(content);
+            } else {
+                unsecuredCopyToClipboard(content);
+            }
+        };
+
+
+        document.fonts.ready.then(function () {
+
+
+            window.iso = new Isotope('.vos-blocks .wrapper', {
+                itemSelector: '.text-block',
+                layoutMode: 'fitRows',
+                percentPosition: true,
+
+            });
+
+        });
+
+
+    })
+
+
+
+
 
 </script>
 
