@@ -1,11 +1,13 @@
 let mongoose = require("../mongooseInit")
 var sanitize = require('mongo-sanitize');
-let { randomPrefix} = require("../../utils")
+let TextBlock = require("./textBlock")
+let { randomPrefix, fullSanitize} = require("../../utils")
 
 //Schema
 const RecognizedSchema = new mongoose.Schema({
     url: String,
     fullText : String,
+    textBlocks : [TextBlock.schema],
     creation : Date
 });
 
@@ -48,7 +50,13 @@ Recognized.CreateRecognized = async (data) => {
 
     if (searchRecognized == null){
 
-        let newRecognized = new Recognized({fullText:sanitize(data.fullText), creation: Date.now(), url:urlGenerated});
+        
+        let textBlocks = typeof data.recognizerBlocks !== 'undefined' ? data.recognizerBlocks : [];
+        let textBlocksCreated = [];
+        for(textBlock of textBlocks){
+            textBlocksCreated.push(new TextBlock({ id: textBlock.id, text: fullSanitize( textBlock.text)}));
+        }
+        let newRecognized = new Recognized({fullText:fullSanitize(data.fullText), creation: Date.now(), url:urlGenerated, textBlocks:textBlocksCreated});
         await newRecognized.save()
         return newRecognized;
 

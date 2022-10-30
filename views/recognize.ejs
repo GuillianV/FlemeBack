@@ -14,7 +14,7 @@
 
     <header>
         <div>
-            fleme.fr/efer3
+            fleme.fr/ 
         </div>
         <div class="clipboard">
             <img src="icons/copy.png">
@@ -37,33 +37,6 @@
         <div class="block-full column vos-blocks">
             <h1>Vos blocks de texte</h1>
             <div class="wrapper">
-                <div class="text-block">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, voluptas et? Sit sint
-                        repudiandae blanditiis recusandae enim voluptates officia earum quidem, quod laudantium dolores
-                        tempore quia voluptate illum dicta quae!
-
-                    </p>
-                    <div class="clipboard">
-                        <img src="icons/copy.png">
-                    </div>
-                </div>
-                <div class="text-block">
-                    <p>
-                        text 2sqbjqdiqsd
-                    </p>
-                    <div class="clipboard">
-                        <img src="icons/copy.png">
-                    </div>
-                </div>
-                <div class="text-block">
-                    <p>
-                        text 3 sqbjqdiqsdsqd
-                    </p>
-                    <div class="clipboard">
-                        <img src="icons/copy.png">
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -76,11 +49,40 @@
     document.addEventListener("DOMContentLoaded", _ => {
 
 
+        
+        var recognizer = JSON.parse('<%- recognize %>')
+        
+        let urlElement = document.querySelector("header div");
+        urlElement.innerText = `fleme.fr/${recognizer.url}`
 
-        var text = "<%- fullText %>"
+        let wrapperElement = document.querySelector(".vos-blocks .wrapper");
+        recognizer.textBlocks?.forEach(textBlock => {
+            let textBlockElement = document.createElement("div");
+            textBlockElement.classList.add("text-block");
+
+            let pElement = document.createElement("p")
+            pElement.innerHTML = textBlock.text;
+
+            let clipboardElement = document.createElement("div");
+            clipboardElement.classList.add("clipboard");
+            clipboardElement.addEventListener("click",e => {
+                copyToClipboard(textBlock.text);
+                alert("Text copié dans le presse-papier");
+            })
+
+            let imgElement = document.createElement("img")
+            imgElement.src = 'icons/copy.png';
+
+            clipboardElement.insertAdjacentElement("beforeend",imgElement);
+
+            textBlockElement.insertAdjacentElement("beforeend",pElement);
+            textBlockElement.insertAdjacentElement("beforeend",clipboardElement);
+            wrapperElement.insertAdjacentElement("beforeend",textBlockElement);
+        });
+
         let pre = document.querySelector(".votre-texte p");
         let exportedText = "";
-        let SplitText = text.split("/!:/");
+        let SplitText = recognizer.fullText.split("/!:/");
         for (var line of SplitText) {
 
             exportedText += line + " ";
