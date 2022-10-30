@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Fleme</title>
-    <link rel="stylesheet" href="stylesheets/reset.css">
-    <link rel="stylesheet" href="stylesheets/style.css">
-    <link rel="stylesheet" href="stylesheets/recognize.css">
-    <script src="https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+    <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="stylesheets/reset.css">
+    <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="stylesheets/style.css">
+    <link rel="stylesheet" media="none" onload="if(media!='all')media='all'" href="stylesheets/recognize.css">
+    <script src="js/libs/isotope.js"></script>
 </head>
 
 <body>
@@ -71,15 +71,13 @@
 
 </body>
 
-<script>
-
-
+<script async>
 
     document.addEventListener("DOMContentLoaded", _ => {
 
 
 
-        var text = "<%- text %>"
+        var text = "<%- fullText %>"
         let pre = document.querySelector(".votre-texte p");
         let exportedText = "";
         let SplitText = text.split("/!:/");

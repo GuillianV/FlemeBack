@@ -5,7 +5,7 @@ let { randomPrefix} = require("../../utils")
 //Schema
 const RecognizedSchema = new mongoose.Schema({
     url: String,
-    text : String,
+    fullText : String,
     creation : Date
 });
 
@@ -16,7 +16,7 @@ RecognizedSchema.methods.GetCreation = function () {
 };
 
 RecognizedSchema.methods.UpdateText = async function (_text) {
-    this.text = _text;
+    this.fullText = _text;
     await this.save()
 };
 
@@ -37,7 +37,7 @@ Recognized.FindRecognizedByUrl = async (url) => {
 
 }
 
-Recognized.CreateRecognized = async (_text) => {
+Recognized.CreateRecognized = async (data) => {
 
     let urlGenerated = randomPrefix("xxxxx")
 
@@ -48,12 +48,12 @@ Recognized.CreateRecognized = async (_text) => {
 
     if (searchRecognized == null){
 
-        let newRecognized = new Recognized({text:sanitize(_text), creation: Date.now(), url:urlGenerated});
+        let newRecognized = new Recognized({fullText:sanitize(data.fullText), creation: Date.now(), url:urlGenerated});
         await newRecognized.save()
         return newRecognized;
 
     } else {
-        return Recognized.CreateRecognized(_text);
+        return Recognized.CreateRecognized(data);
     }
 
 }

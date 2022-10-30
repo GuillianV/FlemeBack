@@ -2,7 +2,8 @@ var express = require('express');
 var { authenticateToken, generateAccessToken} = require("../modules/jwt/jwt")
 var router = express.Router();
 require("dotenv").config()
-let Recognized = require("../modules/database/mongoose/models/recognize")
+let Recognized = require("../modules/database/mongoose/models/recognize");
+const { json } = require('express');
 //var axios = require("axios")
 
 /* GET home page. */
@@ -15,12 +16,21 @@ router.get('/',  async function(req, res, next) {
 
 router.post('/',  async function(req, res, next) {
 
-    let text = typeof req.query.text !== 'undefined' ? req.query.text : null;
-    if(text == null){
-      res.json({error: "No text"})
+
+    let data = typeof req.query.data !== 'undefined' && typeof req.query.data == 'string' ? req.query.data : null;
+    if(data == null){
+      res.json({error: "No data"})
     }
     
-    let recognize = await Recognized.CreateRecognized(text)
+    try {
+      data = JSON.parse(data);
+      console.log(data)
+    } catch (e) {
+      res.json({error: "Data contains invalid value"})
+    }
+
+    console.log(data)
+    let recognize = await Recognized.CreateRecognized(data)
     res.json(recognize)
 });
 

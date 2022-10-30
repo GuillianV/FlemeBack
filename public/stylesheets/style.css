@@ -4,6 +4,12 @@
   src: url("/fonts/Poppins/Poppins-Medium.ttf");
 }
 
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("/fonts/Poppins/Poppins-Bold.ttf");
+}
+
+
 :root {
   --main-color: rgb(54, 143, 139,255);
   --dark-secondary-color : rgb(241, 237, 238);
@@ -69,6 +75,7 @@ body {
 h1{
   margin-left: var(--margin);
   font-size: 3rem;
+  font-family: "Poppins Bold";
   font-weight: 700; 
   margin-bottom: var(--margin);
 }
