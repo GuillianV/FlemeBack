@@ -9,6 +9,10 @@ module.exports.randomPrefix = function(mask = 'xxxxx') {
 
 module.exports.fullSanitize = function(data){
 
-    return  sanitize(data).split("\n").join(" ").replace(/"/g,'"');
+    data = sanitize(data);
+    data = data.replace(/"/g,'\\"');
+    data = data.replace(/'/g,'\\"');
+    data = data.split("\n").join(" ");
+    return  data;
 
 }
