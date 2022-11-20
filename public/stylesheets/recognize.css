@@ -4,7 +4,7 @@ header{
     z-index: 10;
     position: sticky;
     top: var(--margin);
-    width: calc(100vw - (( var(--margin) + var(--padding))* 2));
+    width: calc(100% - (( var(--margin) + var(--padding))* 2));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +43,7 @@ h1{
 
 .votre-texte{
     padding: 0;
-    width: calc(100vw - (( var(--margin))* 2));
+    width: calc(100% - (( var(--margin))* 2));
 }
 .votre-texte p{
     background-color: #fff;

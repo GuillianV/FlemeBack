@@ -47,7 +47,7 @@ body {
 }
 
 .block-full{
-  width: calc(100vw - (( var(--margin) + var(--padding))* 2));
+  width: calc(100% - (( var(--margin) + var(--padding))* 2));
   display: flex;
   margin: var(--margin);
   padding: var(--padding);
@@ -93,4 +93,25 @@ footer{
   
   background-color: var(--light-secondary-color);
   color: var(--light-background-color);
+}
+
+footer div{
+  margin: var(--margin);
+}
+
+footer .links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+footer .credits{
+  text-align: center;
+}
+
+footer .links a {
+  text-decoration: underline;
+  color: var(--light-background-color);
+  margin: 0 var(--margin);
 }
