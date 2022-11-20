@@ -41,6 +41,11 @@
         </div>
     </div>
 
+    <footer>
+
+
+        
+    </footer>
 
 </body>
 
@@ -80,15 +85,12 @@
             wrapperElement.insertAdjacentElement("beforeend",textBlockElement);
         });
 
-        let pre = document.querySelector(".votre-texte p");
+        let pElement = document.querySelector(".votre-texte p");
         let exportedText = "";
-        let SplitText = recognizer.fullText.split("/!:/");
-        for (var line of SplitText) {
-
-            exportedText += line + " ";
-            pre.insertAdjacentHTML("beforeend", "<br>")
-            pre.insertAdjacentText("beforeend", line)
-            pre.insertAdjacentHTML("beforeend", "<br>")
+        for (var line of recognizer.textBlocks) {
+            exportedText += line.text + " \n";
+            pElement.insertAdjacentText("beforeend", line.text)
+            pElement.insertAdjacentHTML("beforeend", "<br>")
 
         };
 

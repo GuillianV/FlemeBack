@@ -24,6 +24,8 @@ app.use(cookieParser());
 
 //Chemin static d'acces aux fichiers
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'partials')));
+
 
 //Acces au body de la requette (req.body)
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -33,7 +35,7 @@ app.enable('trust proxy');
 
 // Load Routes
 let routesFolder = "./routes"
-app.use(`/`, require(`${routesFolder}/index`));
+
 fs.readdirSync( path.join(__dirname,"/routes"))?.forEach(file =>{
 
   if (!file.includes("index")){
@@ -43,7 +45,7 @@ fs.readdirSync( path.join(__dirname,"/routes"))?.forEach(file =>{
     app.use(`/${file.replace(".js","")}`, require(`${routesFolder}/${file.replace(".js","")}`));
   }
 });
-
+app.use(`/`, require(`${routesFolder}/index`));
 
 
 

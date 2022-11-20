@@ -19,7 +19,6 @@ router.get('/',  async function(req, res, next) {
 
 router.get('/:recognizeUrl',  async function(req, res, next) {
 
-
   let recognize = await Recognized.FindRecognizedByUrl(req.params.recognizeUrl)
   if(recognize == null){
     res.render('index', { title: 'Fleme' });

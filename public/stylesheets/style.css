@@ -30,6 +30,7 @@
 }
 
 body {
+  overflow-x: hidden;
   font: 14px var(--font-family);
   background-color: var(--dark-secondary-color);
 }
@@ -78,4 +79,18 @@ h1{
   font-family: "Poppins Bold";
   font-weight: 700; 
   margin-bottom: var(--margin);
+}
+
+h2{
+  margin-left: var(--margin);
+  font-size: 1.2rem;
+  font-family: "Poppins Bold";
+  font-weight: 500; 
+  margin-bottom: var(--margin);
+}
+
+footer{
+  
+  background-color: var(--light-secondary-color);
+  color: var(--light-background-color);
 }
